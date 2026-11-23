@@ -95,4 +95,4 @@ Tools: `itch_status` (start here), `itch_page`, `itch_push` (dry run unless `con
 
 Run the tests with `npm test` (no network needed).
 
-License: see `LICENSE.txt`. Made by Dalytria Studio.
+License: MIT (see `LICENSE.txt`). Made by Dalytria Studio.

@@ -63,4 +63,4 @@ El nombre del canal le dice a itch la plataforma: incluye `windows`, `linux`, `o
    Ninguna IA debe escribir datos bancarios, fiscales ni contraseñas.
 3. Una sola subida a la vez (archivo de bloqueo): dos IAs nunca suben encima una de otra.
 
-Pruebas: `npm test` (sin red). Licencia: `LICENSE.txt`. Hecho por Dalytria Studio.
+Pruebas: `npm test` (sin red). Licencia: MIT (`LICENSE.txt`). Hecho por Dalytria Studio.

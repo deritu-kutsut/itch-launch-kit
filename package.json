@@ -11,5 +11,5 @@
   },
   "keywords": ["itch.io", "butler", "gamedev", "mcp", "ai-agent", "unity", "godot"],
   "author": "Dalytria Studio",
-  "license": "SEE LICENSE IN LICENSE.txt"
+  "license": "MIT"
 }
