@@ -1,0 +1,22 @@
+Itch Launch Kit — License
+Copyright (c) 2026 Dalytria Studio. All rights reserved.
+
+By purchasing Itch Launch Kit on itch.io you (an individual or a single studio) get a perpetual, worldwide license to:
+- use the kit on any number of your own computers and in any number of your own projects, free or commercial;
+- let AI agents and team members of your studio run it on your projects;
+- modify the source code for your own use.
+
+You may not:
+- redistribute, resell, sublicense or publish the kit or a modified version of it, in whole or in part;
+- include it in another product for sale (asset packs, templates, tool bundles).
+
+Games and builds you publish with the kit are entirely yours; this license claims nothing over them.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHORS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM THE USE OF THE SOFTWARE. itch.io and butler are products
+of itch corp; this kit is an independent tool and is not affiliated with or endorsed by itch corp.
+
+--- Español (resumen; manda el texto en inglés) ---
+Con la compra puedes usar el kit en todos tus equipos y proyectos (gratis o comerciales), dejar que tus IAs y tu equipo
+lo usen y modificarlo para ti. No puedes redistribuirlo, revenderlo ni incluirlo en otro producto a la venta.
+Tus juegos son tuyos. Se entrega «tal cual», sin garantía. No está afiliado a itch corp.

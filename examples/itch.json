@@ -1,0 +1,25 @@
+{
+  "user": "",
+  "game": "star-courier",
+  "versionFrom": "ProjectSettings/ProjectSettings.asset",
+  "channels": {
+    "windows": {
+      "path": "Builds/Windows",
+      "exe": "StarCourier.exe",
+      "ignore": ["*_BurstDebugInformation_DoNotShip", "*_BackUpThisFolder_ButDontShipItWithYourGame", "*.pdb"]
+    },
+    "linux": { "path": "Builds/Linux" },
+    "android": { "path": "Builds/StarCourier.apk" },
+    "html5": { "path": "Builds/WebGL" }
+  },
+  "page": {
+    "title": "Star Courier",
+    "tagline": "Deliver parcels across a dying galaxy before the stars go out.",
+    "description": "itch/description.md",
+    "genre": "Action",
+    "tags": ["space", "delivery", "pixel-art", "arcade", "singleplayer"],
+    "cover": "itch/cover.png",
+    "screenshots": "itch/screenshots",
+    "price": { "mode": "paid", "usd": 4.99 }
+  }
+}

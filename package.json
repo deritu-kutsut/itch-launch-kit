@@ -1,0 +1,15 @@
+{
+  "name": "itch-launch-kit",
+  "version": "1.0.0",
+  "description": "Sell and update your game on itch.io from the terminal or from any AI agent (CLI + MCP server + agent skill). Zero dependencies.",
+  "type": "module",
+  "bin": { "itchkit": "bin/itchkit.mjs" },
+  "engines": { "node": ">=18.17" },
+  "scripts": {
+    "test": "node --test test/kit.test.mjs",
+    "mcp": "node bin/itchkit.mjs mcp"
+  },
+  "keywords": ["itch.io", "butler", "gamedev", "mcp", "ai-agent", "unity", "godot"],
+  "author": "Dalytria Studio",
+  "license": "SEE LICENSE IN LICENSE.txt"
+}

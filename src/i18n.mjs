@@ -1,0 +1,168 @@
+// Messages in English and Spanish. Language: --lang, ITCHKIT_LANG, LANG or the system locale.
+const EN = {
+  // general
+  verdict: 'VERDICT', ok: 'OK', partial: 'PARTIAL', fail: 'FAIL',
+  next: 'Next: {action}',
+  warning: 'Warning: {text}',
+  fullOutput: 'Full output: {path}',
+  usageAction: 'action must be one of: {list}',
+  // config
+  noConfig: 'no {file} here; create one with: itchkit init',
+  badJson: '{file} is not valid JSON: {error}',
+  badGame: '"game" in {file} must be the project slug on itch (e.g. my-game for user.itch.io/my-game)',
+  noChannels: '{file} has no "channels"',
+  badChannel: 'invalid channel "{name}": use lowercase letters, digits and "-" (itch detects the platform from the name: windows, linux, osx, android, html5)',
+  keyInConfig: '{file} contains an API key: remove it and use ITCH_API_KEY or "butler login"',
+  // key
+  keyFrom: 'API key ({origin})',
+  noKey: 'no itch.io API key',
+  noKeyAction: 'create one at {url} and set ITCH_API_KEY (environment or ~/.itchkit/env), or run "butler login"',
+  keyRejected: 'itch rejected the API key ({error}); create a new one at {url}',
+  httpError: 'itch answered {status} on {resource}',
+  // steps
+  stepButlerOk: 'butler {version}', stepButlerNo: 'butler not found', stepButlerAction: 'run: itchkit install-butler (or install the itch app)',
+  stepUserOk: 'user {user}', stepUserNo: 'itch user unknown', stepUserAction: 'set "user" in {file} (or configure the key and it is detected)',
+  stepPageUnknown: 'project page not checked (no key or network)', stepPageUnknownAction: 'if it does not exist, create it at {url} with the URL "{game}"',
+  stepPageNo: 'no project "{game}" in your account', stepPageNoAction: 'create it at {url} (Kind: Downloadable, URL: {game})',
+  stepPageOk: 'page {url}',
+  stepBuilds: '{have} of {total} local builds', stepBuildsMissing: ' (missing: {list})', stepBuildsAction: 'build your game into the paths of {file}',
+  stepContentOk: 'store page content complete', stepContentNo: 'store page: {count} to do ({first})', stepContentAction: 'itchkit page',
+  stepUploadUnknown: 'channels on itch not checked', stepUploadUnknownAction: 'itchkit remote',
+  stepUploadNo: 'nothing uploaded yet', stepUploadNoAction: 'itchkit push --channel all  (dry run; add --confirm to upload)',
+  stepUploadOk: '{count} channels: {list}',
+  stepPriceOk: 'minimum price {price} USD on itch', stepPriceMode: 'mode {mode}', stepPriceManual: 'set the price ({mode}) in the dashboard', stepPriceUndecided: 'price not decided',
+  stepPriceAction: 'in {url} → Pricing (itch has no API for prices)',
+  stepPayouts: 'payouts and tax interview (PayPal/Stripe)', stepPayoutsAction: 'done by you in {url} → Payouts; an AI must never type bank or tax data',
+  stepPublishedUnknown: 'visibility not checked', stepPublishedOk: 'published', stepPublishedNo: 'draft', stepPublishedAction: 'in {url} → Visibility & access → Public',
+  statusHeader: 'Sell "{title}" on itch.io: {ready} of {total} steps ready',
+  statusReason: '{ready}/{total} steps to sell',
+  // page
+  pageNoTitle: 'missing page.title', pageNoTagline: 'missing page.tagline (short line shown in listings)',
+  pageLongTagline: 'the tagline has {n} characters; itch cuts it in listings (max {max})',
+  pageNoTags: 'missing page.tags', pageTooManyTags: '{n} tags; itch allows {max}', pageBadTags: 'tags with capitals or symbols: {list}',
+  pageNoDescription: 'missing page.description (path to the .md with the page text)', pageDescriptionMissing: '{path} does not exist; write it (an AI can draft it)',
+  pageShortDescription: 'the description has {n} words; aim for at least {min}',
+  pageNoCover: 'missing page.cover', pageCoverMissing: 'cover {path} does not exist ({size} px)', pageCoverFormat: 'unknown image format in {path} (use PNG, JPG or GIF)',
+  pageCoverSmall: 'cover {size}: minimum {min}', pageCoverRatio: 'cover {size}: itch crops it; ideal ratio is 630×500 (1.26)',
+  pageShotFormat: 'screenshot with unknown format: {name}', pageShotSmall: 'small screenshot ({size}): {name}',
+  pageFewShots: '{n} screenshots in {dir}; itch recommends {min} to 5',
+  pageNoPrice: 'page.price.mode empty: choose {list}', pagePaidNoPrice: 'mode "paid" needs page.price.usd above 0',
+  pageUndecided: '(not decided)',
+  pageSummary1: 'Title: {title} · Genre: {genre} · Price: {price}', pageSummary2: 'Tagline: {tagline}', pageSummary3: 'Tags ({n}): {tags}',
+  pageSummary4: 'Description: {description}{words} · Cover: {cover} · Screenshots: {shots}', pageWords: ' ({n} words)',
+  pageReasonTodo: '{todo} to do and {warn} warnings on the store page', pageReasonOk: 'store page complete', pageReasonWarn: ', {n} warnings',
+  // push
+  pushNeedsChannel: 'push needs --channel <{list}|all>', pushUnknownChannel: 'channel "{name}" is not in {file}; available: {list}',
+  pushNoButler: 'butler not found', pushNoButlerLine: 'Run: itchkit install-butler (or install the itch app), then: itchkit status',
+  pushNoUser: 'itch user unknown', pushNoUserLine: 'Set "user" in {file} or pass --user',
+  pushMissingPath: '{path} does not exist; build it first', pushMissingExe: '{exe} does not exist inside {path}',
+  pushManifest: ' · .itch.toml created', pushDetail: '{size}, {files} files', pushSkipped: ', without {list}',
+  pushDry: 'DRY RUN (nothing uploaded). To upload for real: itchkit push --channel {channel} --confirm',
+  pushDone: 'Uploaded to {target} version {version}', pushNoVersion: '(no version)',
+  pushProcessing: 'itch processes the build for a few minutes; check with: itchkit remote',
+  pushReason: '{ok}/{total} channels {how}', pushHowDry: 'simulated', pushHowReal: 'uploaded',
+  // remote
+  remoteFail: 'could not query itch', remoteNoGame: 'no project "{game}" on itch',
+  remoteNoGameLine: 'Account {user} has {n} projects and none with URL "{game}". Create it at {url} or fix "game" in {file}',
+  remoteTitle: '{title} — {state} — {url}', remotePublished: 'PUBLISHED', remoteDraft: 'draft',
+  remotePrice: 'Minimum price: {price} · Platforms: {platforms}', remoteFree: 'free', remoteNone: 'none',
+  remoteStats: 'Views {views} · Downloads {downloads} · Purchases {purchases} · Earnings {earnings}',
+  remoteChannel: 'Channel {channel}: version {version} · build {build}', remoteNoBuilds: 'No builds uploaded yet', remoteNoButler: 'Channels not queried (no butler)',
+  remoteEdit: 'Edit: {url}', remoteReason: '{purchases} purchases, {downloads} downloads',
+  // init
+  initExists: '{file} already exists; nothing changed (delete it to start over)',
+  initCreated: '{file} created', initEngine: 'Engine detected: {engine}', initNoEngine: 'No Unity or Godot project detected: edit the channels by hand',
+  initChannel: 'Channel {channel} → {path}', initNoBuilds: 'No builds found: point "channels" to your build folders or .apk files',
+  initNext: 'Next: fill "user", "game" and "page", then run: itchkit status',
+  // install-butler
+  installHave: 'butler {version} is already available ({path})', installDone: 'butler {version} installed in {path}',
+  installFail: 'could not install butler: {error}', installUnsupported: 'no butler download for {platform}-{arch}; install the itch app instead',
+};
+
+const ES = {
+  verdict: 'VEREDICTO', ok: 'OK', partial: 'PARCIAL', fail: 'FALLO',
+  next: 'Siguiente: {action}',
+  warning: 'Aviso: {text}',
+  fullOutput: 'Salida completa: {path}',
+  usageAction: 'la acción debe ser una de: {list}',
+  noConfig: 'no hay {file} aquí; créalo con: itchkit init',
+  badJson: '{file} no es JSON válido: {error}',
+  badGame: '«game» en {file} debe ser la URL corta del proyecto en itch (ej. mi-juego para usuario.itch.io/mi-juego)',
+  noChannels: '{file} no tiene «channels»',
+  badChannel: 'canal «{name}» inválido: usa minúsculas, dígitos y «-» (itch detecta la plataforma por el nombre: windows, linux, osx, android, html5)',
+  keyInConfig: '{file} contiene una clave de API: quítala y usa ITCH_API_KEY o «butler login»',
+  keyFrom: 'clave de API ({origin})',
+  noKey: 'sin clave de API de itch.io',
+  noKeyAction: 'crea una en {url} y ponla en ITCH_API_KEY (entorno o ~/.itchkit/env), o corre «butler login»',
+  keyRejected: 'itch rechazó la clave ({error}); crea otra en {url}',
+  httpError: 'itch respondió {status} en {resource}',
+  stepButlerOk: 'butler {version}', stepButlerNo: 'butler no encontrado', stepButlerAction: 'corre: itchkit install-butler (o instala la app de itch)',
+  stepUserOk: 'usuario {user}', stepUserNo: 'usuario de itch desconocido', stepUserAction: 'pon «user» en {file} (o configura la clave y se detecta solo)',
+  stepPageUnknown: 'página del proyecto sin comprobar (sin clave o sin red)', stepPageUnknownAction: 'si no existe, créala en {url} con la URL «{game}»',
+  stepPageNo: 'no hay proyecto «{game}» en tu cuenta', stepPageNoAction: 'créalo en {url} (Kind: Downloadable, URL: {game})',
+  stepPageOk: 'página {url}',
+  stepBuilds: '{have} de {total} builds locales', stepBuildsMissing: ' (faltan: {list})', stepBuildsAction: 'compila tu juego en las rutas de {file}',
+  stepContentOk: 'ficha de la tienda completa', stepContentNo: 'ficha: {count} pendientes ({first})', stepContentAction: 'itchkit page',
+  stepUploadUnknown: 'canales en itch sin comprobar', stepUploadUnknownAction: 'itchkit remote',
+  stepUploadNo: 'nada subido todavía', stepUploadNoAction: 'itchkit push --channel all  (simula; añade --confirm para subir)',
+  stepUploadOk: '{count} canales: {list}',
+  stepPriceOk: 'precio mínimo {price} USD en itch', stepPriceMode: 'modo {mode}', stepPriceManual: 'poner el precio ({mode}) en el panel', stepPriceUndecided: 'precio sin decidir',
+  stepPriceAction: 'en {url} → Pricing (itch no tiene API para precios)',
+  stepPayouts: 'cobros e impuestos (PayPal/Stripe)', stepPayoutsAction: 'lo haces tú en {url} → Payouts; una IA nunca escribe datos bancarios ni fiscales',
+  stepPublishedUnknown: 'visibilidad sin comprobar', stepPublishedOk: 'publicado', stepPublishedNo: 'borrador', stepPublishedAction: 'en {url} → Visibility & access → Public',
+  statusHeader: 'Vender «{title}» en itch.io: {ready} de {total} pasos listos',
+  statusReason: '{ready}/{total} pasos para vender',
+  pageNoTitle: 'falta page.title', pageNoTagline: 'falta page.tagline (frase corta de los listados)',
+  pageLongTagline: 'el lema tiene {n} caracteres; itch lo corta en listados (máx. {max})',
+  pageNoTags: 'faltan page.tags', pageTooManyTags: '{n} etiquetas; itch admite {max}', pageBadTags: 'etiquetas con mayúsculas o símbolos: {list}',
+  pageNoDescription: 'falta page.description (ruta al .md con el texto de la página)', pageDescriptionMissing: 'no existe {path}; escríbelo (una IA puede redactarlo)',
+  pageShortDescription: 'la descripción tiene {n} palabras; conviene al menos {min}',
+  pageNoCover: 'falta page.cover', pageCoverMissing: 'no existe la portada {path} ({size} px)', pageCoverFormat: 'formato de imagen desconocido en {path} (usa PNG, JPG o GIF)',
+  pageCoverSmall: 'portada {size}: mínimo {min}', pageCoverRatio: 'portada {size}: itch la recorta; la proporción ideal es 630×500 (1,26)',
+  pageShotFormat: 'captura con formato desconocido: {name}', pageShotSmall: 'captura pequeña ({size}): {name}',
+  pageFewShots: '{n} capturas en {dir}; itch recomienda {min} a 5',
+  pageNoPrice: 'page.price.mode vacío: elige {list}', pagePaidNoPrice: 'el modo «paid» exige page.price.usd mayor que 0',
+  pageUndecided: '(sin decidir)',
+  pageSummary1: 'Título: {title} · Género: {genre} · Precio: {price}', pageSummary2: 'Lema: {tagline}', pageSummary3: 'Etiquetas ({n}): {tags}',
+  pageSummary4: 'Descripción: {description}{words} · Portada: {cover} · Capturas: {shots}', pageWords: ' ({n} palabras)',
+  pageReasonTodo: '{todo} pendientes y {warn} avisos en la ficha', pageReasonOk: 'ficha completa', pageReasonWarn: ', {n} avisos',
+  pushNeedsChannel: 'push exige --channel <{list}|all>', pushUnknownChannel: 'el canal «{name}» no está en {file}; hay: {list}',
+  pushNoButler: 'butler no encontrado', pushNoButlerLine: 'Corre: itchkit install-butler (o instala la app de itch) y luego: itchkit status',
+  pushNoUser: 'usuario de itch desconocido', pushNoUserLine: 'Pon «user» en {file} o pásalo con --user',
+  pushMissingPath: 'no existe {path}; compílalo primero', pushMissingExe: 'no existe {exe} dentro de {path}',
+  pushManifest: ' · .itch.toml creado', pushDetail: '{size}, {files} archivos', pushSkipped: ', sin {list}',
+  pushDry: 'SIMULACIÓN (nada se subió). Para subir de verdad: itchkit push --channel {channel} --confirm',
+  pushDone: 'Subido a {target} versión {version}', pushNoVersion: '(sin versión)',
+  pushProcessing: 'itch procesa la build unos minutos; revisa con: itchkit remote',
+  pushReason: '{ok}/{total} canales {how}', pushHowDry: 'simulados', pushHowReal: 'subidos',
+  remoteFail: 'no se pudo consultar itch', remoteNoGame: 'sin proyecto «{game}» en itch',
+  remoteNoGameLine: 'La cuenta {user} tiene {n} proyectos y ninguno con la URL «{game}». Créalo en {url} o corrige «game» en {file}',
+  remoteTitle: '{title} — {state} — {url}', remotePublished: 'PUBLICADO', remoteDraft: 'borrador',
+  remotePrice: 'Precio mínimo: {price} · Plataformas: {platforms}', remoteFree: 'gratis', remoteNone: 'ninguna',
+  remoteStats: 'Vistas {views} · Descargas {downloads} · Compras {purchases} · Ganancias {earnings}',
+  remoteChannel: 'Canal {channel}: versión {version} · build {build}', remoteNoBuilds: 'Sin builds subidas todavía', remoteNoButler: 'Canales sin consultar (falta butler)',
+  remoteEdit: 'Editar: {url}', remoteReason: '{purchases} compras, {downloads} descargas',
+  initExists: '{file} ya existe; no se cambió nada (bórralo para empezar de nuevo)',
+  initCreated: '{file} creado', initEngine: 'Motor detectado: {engine}', initNoEngine: 'No se detectó un proyecto de Unity ni de Godot: edita los canales a mano',
+  initChannel: 'Canal {channel} → {path}', initNoBuilds: 'No se encontraron builds: apunta «channels» a tus carpetas de build o a los .apk',
+  initNext: 'Siguiente: rellena «user», «game» y «page», y corre: itchkit status',
+  installHave: 'butler {version} ya está disponible ({path})', installDone: 'butler {version} instalado en {path}',
+  installFail: 'no se pudo instalar butler: {error}', installUnsupported: 'no hay descarga de butler para {platform}-{arch}; instala la app de itch',
+};
+
+const DICT = { en: EN, es: ES };
+
+/** Picks the language from an explicit value, ITCHKIT_LANG, LANG or the system locale. */
+export function pickLang(explicit, env = process.env) {
+  const raw = String(explicit || env.ITCHKIT_LANG || env.LANG || env.LC_ALL || Intl.DateTimeFormat().resolvedOptions().locale || 'en').toLowerCase();
+  return raw.startsWith('es') ? 'es' : 'en';
+}
+
+/** Returns t(key, vars) for a language; unknown keys fall back to English, then to the key itself. */
+export function translator(lang = 'en') {
+  const d = DICT[lang] ?? EN;
+  return (key, vars = {}) => String(d[key] ?? EN[key] ?? key).replace(/\{(\w+)\}/g, (_, n) => (vars[n] ?? ''));
+}
+
+export const KEYS = Object.keys(EN);
+export const SPANISH_KEYS = Object.keys(ES);
