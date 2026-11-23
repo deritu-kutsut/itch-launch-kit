@@ -1,6 +1,6 @@
 {
   "name": "itch-launch-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sell and update your game on itch.io from the terminal or from any AI agent (CLI + MCP server + agent skill). Zero dependencies.",
   "type": "module",
   "bin": { "itchkit": "bin/itchkit.mjs" },
